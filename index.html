@@ -1,0 +1,1315 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#00cfc7">
+<title>MUNDO OCULTO — Desafía tu mente</title>
+
+<style>
+:root {
+  --turquesa: #00d5cc;
+  --turquesa-claro: #8ffff5;
+  --fondo: #073c40;
+  --panel: #07565a;
+  --panel-oscuro: #06363c;
+  --rosa: #ff45ce;
+  --amarillo: #ffe66d;
+  --blanco: #f5ffff;
+  --verde: #7dffb1;
+  --borde: #38eee0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--blanco);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #21cfc4 0%, #087d80 35%, #06494e 72%, #032d32 100%);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: .65;
+  cursor: default;
+}
+
+/* TITULO HOLOGRÁFICO */
+
+.header {
+  padding: 20px 10px 15px;
+  text-align: center;
+  background: linear-gradient(180deg, #034348, #07696b);
+  border-bottom: 3px solid #49fff0;
+  box-shadow: 0 5px 25px #002b3055;
+}
+
+.logo {
+  display: inline-block;
+  margin: 0;
+  font-size: clamp(30px, 6vw, 65px);
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -2px;
+  line-height: 1.15;
+
+  background:
+    linear-gradient(
+      115deg,
+      #ffffff 0%,
+      #7ffff5 12%,
+      #00d9ff 23%,
+      #ffffff 32%,
+      #ff80e8 43%,
+      #ffffff 50%,
+      #8affdf 61%,
+      #ffe986 73%,
+      #ffffff 82%,
+      #52dfff 100%
+    );
+
+  background-size: 250% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  -webkit-text-stroke: 1px #ffffff99;
+  filter: drop-shadow(0 0 5px #73fff7)
+          drop-shadow(0 0 12px #00cfff)
+          drop-shadow(0 0 22px #ff4dd8);
+
+  animation: holograma 5s linear infinite;
+}
+
+@keyframes holograma {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 250% 50%; }
+}
+
+.tagline {
+  margin-top: 8px;
+  color: #c5fffb;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+/* ESTADISTICAS */
+
+.headerrow {
+  max-width: 1050px;
+  margin: 15px auto 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  background: #043c42;
+  border: 1px solid #47eee1;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  box-shadow: 0 3px 8px #00363a44;
+}
+
+.badge b {
+  color: var(--amarillo);
+}
+
+/* CONTENIDO */
+
+.wrap {
+  max-width: 1150px;
+  padding: 12px;
+  margin: auto;
+}
+
+.panel {
+  margin-bottom: 13px;
+  padding: 15px;
+  border: 1px solid #63f5e9;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #08777a, #06494e);
+  box-shadow: 0 7px 20px #00373b55;
+}
+
+.panel h2 {
+  margin: 0 0 13px;
+  color: #a6fff7;
+  text-align: center;
+  font-size: clamp(17px, 2.5vw, 24px);
+}
+
+.pink {
+  color: #ffb0ee !important;
+}
+
+.gold {
+  color: var(--amarillo);
+}
+
+.section-note {
+  margin: 8px 0 0;
+  text-align: center;
+  color: #d2fffc;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* REGLAS ARRIBA */
+
+.rules {
+  line-height: 1.65;
+  color: #edfffe;
+  font-size: 14px;
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.rules-box {
+  background: #04474b;
+  border: 1px solid #30cfc5;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.rules strong {
+  color: var(--amarillo);
+}
+
+.rules ol {
+  margin: 7px 0 0;
+  padding-left: 21px;
+}
+
+.rules li {
+  margin-bottom: 3px;
+}
+
+/* PERSONAJES */
+
+.characters {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.character {
+  min-width: 0;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  background: linear-gradient(150deg, #07545b, #073b46);
+  border: 2px solid #2ccdc8;
+  border-radius: 12px;
+
+  transition: transform .15s, border-color .15s;
+}
+
+.character:hover {
+  transform: translateY(-2px);
+}
+
+.character.active {
+  border: 3px solid var(--amarillo);
+  box-shadow: 0 0 16px #ffe66d88;
+  background: linear-gradient(150deg, #117d7d, #07515a);
+}
+
+.character img,
+.character .emoji {
+  width: 100%;
+  height: 105px;
+  border-radius: 8px;
+  background: radial-gradient(circle, #1caaa8, #05353d);
+}
+
+.character img {
+  object-fit: contain;
+}
+
+.character .emoji {
+  display: grid;
+  place-items: center;
+  font-size: 46px;
+}
+
+.character strong {
+  font-size: 11px;
+  letter-spacing: .4px;
+}
+
+/* BOTONES */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.btn {
+  padding: 11px 16px;
+  border: 1px solid #66f8ee;
+  border-radius: 10px;
+  background: #075157;
+  color: white;
+  font-weight: bold;
+}
+
+.btn.primary {
+  color: #06383a;
+  background: linear-gradient(100deg, #fff17d, #ffcb3d);
+  border: 0;
+  box-shadow: 0 4px 0 #b27d11;
+}
+
+.btn.danger {
+  background: #7c245c;
+  border-color: #ff91df;
+}
+
+.btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+/* ROMPECABEZAS */
+
+.puzzle {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.piece {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 1.5;
+  overflow: hidden;
+  padding: 0;
+
+  border: 2px solid #86fff3;
+  border-radius: 5px;
+  background: #064a52;
+}
+
+.piece-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.piece-art img {
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  max-width: none;
+  object-fit: fill;
+  left: calc(var(--col) * -100%);
+  top: calc(var(--row) * -100%);
+}
+
+.piece .emoji {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(25px, 5vw, 50px);
+}
+
+.piece small {
+  position: absolute;
+  z-index: 2;
+  top: 3px;
+  left: 3px;
+  min-width: 23px;
+  padding: 3px 5px;
+  border-radius: 5px;
+  background: #002d32d9;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.piece.selected {
+  outline: 4px solid var(--amarillo);
+  outline-offset: -4px;
+  z-index: 2;
+}
+
+.piece.correct {
+  border-color: #83ffbd;
+}
+
+.progressline {
+  max-width: 600px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #d6fffb;
+  font-size: 12px;
+}
+
+/* CARTAS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.card {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: .72;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid #c5fff8;
+  border-radius: 10px;
+
+  background:
+    radial-gradient(circle at 30% 25%, #20c8d1, transparent 40%),
+    linear-gradient(135deg, #07505d, #07313f 65%, #0a7b80);
+
+  box-shadow: 0 4px 8px #00353b66;
+  transition: transform .15s;
+}
+
+.card:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.card-back {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #9bfff5;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 8px,
+      #ffffff12 8px 10px
+    );
+}
+
+.card-symbol {
+  font-size: clamp(24px, 4vw, 43px);
+  color: #c8fff9;
+  text-shadow: 0 0 8px #00eaff;
+}
+
+.card-label {
+  color: #d8fffb;
+  font-size: clamp(8px, 1.5vw, 11px);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.card img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: radial-gradient(circle, #168d91, #043a46);
+}
+
+.card .emoji {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(28px, 4vw, 48px);
+  background: radial-gradient(circle, #168d91, #043a46);
+}
+
+.card.revealed .card-back,
+.card.matched .card-back {
+  display: none;
+}
+
+.card.revealed img,
+.card.matched img {
+  display: block;
+}
+
+.card.revealed .emoji[data-fallback="1"],
+.card.matched .emoji[data-fallback="1"] {
+  display: flex;
+}
+
+.card.matched {
+  border: 3px solid var(--verde);
+  box-shadow: 0 0 14px #7dffb177;
+}
+
+.card.matched::after {
+  content: "✓";
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0c774a;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.card:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+/* ESTADOS */
+
+.status {
+  min-height: 24px;
+  margin: 10px 0 0;
+  text-align: center;
+  color: #e1fffd;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.finish {
+  display: none;
+  text-align: center;
+  border: 2px solid var(--amarillo);
+  box-shadow: 0 0 25px #ffe66d55;
+}
+
+.finish.show {
+  display: block;
+}
+
+.trophy {
+  font-size: 55px;
+}
+
+.finish h2 {
+  color: var(--amarillo);
+}
+
+.finish p {
+  line-height: 1.8;
+}
+
+.footer {
+  padding: 10px 4px 22px;
+  text-align: center;
+  color: #c1fff9;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.toast {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  display: none;
+  max-width: 92%;
+  padding: 12px 17px;
+  border: 2px solid #86fff5;
+  border-radius: 12px;
+  background: #06494e;
+  box-shadow: 0 5px 20px #00333788;
+  text-align: center;
+}
+
+.toast.show {
+  display: block;
+}
+
+/* CELULARES */
+
+@media(max-width: 800px) {
+  .characters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 480px) {
+  .wrap {
+    padding: 7px;
+  }
+
+  .panel {
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .characters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .character img,
+  .character .emoji {
+    height: 85px;
+  }
+
+  .character strong {
+    font-size: 10px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .piece {
+    aspect-ratio: 1.15;
+  }
+
+  .logo {
+    letter-spacing: -1px;
+  }
+
+  .tagline {
+    letter-spacing: 1.3px;
+    font-size: 9px;
+  }
+
+  .badge {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+
+  .btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <h1 class="logo">MUNDO OCULTO</h1>
+  <div class="tagline">DESAFÍA TU MENTE · DESCUBRE LEYENDAS</div>
+
+  <div class="headerrow">
+    <div class="badge">PERSONAJE: <b id="badgeName">ZYLAN</b></div>
+    <div class="badge">PUNTOS: <b id="score">0</b></div>
+    <div class="badge">TIEMPO: <b id="time">00:00</b></div>
+    <div class="badge">MOVIMIENTOS: <b id="moves">0</b></div>
+    <div class="badge">PAREJAS: <b id="pairs">0 / 12</b></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1. REGLAS ARRIBA DE TODO -->
+  <section class="panel rules">
+    <h2>📜 REGLAS DEL JUEGO</h2>
+
+    <div class="rules-grid">
+      <div class="rules-box">
+        <strong>🎯 CÓMO JUGAR</strong>
+        <ol>
+          <li>Elegí uno de los 12 personajes.</li>
+          <li>Ordená las 9 piezas del rompecabezas tocando dos piezas para intercambiarlas.</li>
+          <li>Cuando el rompecabezas esté completo, pulsá «DESBLOQUEAR CARTAS».</li>
+          <li>Descubrí las dos cartas iguales de cada personaje.</li>
+          <li>Si no coinciden, las dos cartas se esconderán otra vez.</li>
+          <li>Encontrá las 12 parejas para ganar.</li>
+        </ol>
+      </div>
+
+      <div class="rules-box">
+        <strong>⭐ PUNTOS Y CONTROLES</strong>
+        <ol>
+          <li>Cada pareja correcta suma <strong>250 puntos</strong>.</li>
+          <li>Una pareja incorrecta resta <strong>10 puntos</strong>, sin bajar de cero.</li>
+          <li>El reloj comienza con el primer movimiento del rompecabezas.</li>
+          <li>El contador registra los movimientos y los intentos con cartas.</li>
+          <li>Podés reiniciar la partida cuando quieras.</li>
+          <li>«COMENZAR DE NUEVO» crea una partida nueva desde cero.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PERSONAJES -->
+  <section class="panel" id="characterPanel">
+    <h2 class="pink">1 · ELEGÍ TU PERSONAJE</h2>
+    <div class="characters" id="characters"></div>
+
+    <p class="section-note">
+      Elegí una leyenda. Su imagen aparecerá en el rompecabezas.
+      Las 24 cartas incluyen dos cartas de cada personaje.
+    </p>
+  </section>
+
+  <!-- 3. ROMPECABEZAS -->
+  <section class="panel">
+    <h2>2 · ROMPECABEZAS</h2>
+
+    <p class="section-note" style="margin-bottom:12px">
+      Tocá una pieza y después otra para intercambiarlas.
+      Ordená los números del 1 al 9.
+    </p>
+
+    <div class="puzzle" id="puzzle"></div>
+
+    <div class="progressline">
+      <span id="progress">0 de 9 piezas correctas</span>
+      <span>Dificultad: <b class="gold">MEDIA</b></span>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="ready">
+        DESBLOQUEAR CARTAS
+      </button>
+
+      <button class="btn danger" id="restart">
+        ↻ REINICIAR PARTIDA
+      </button>
+    </div>
+
+    <p class="status" id="puzzleStatus">
+      Elegí un personaje y completá el rompecabezas.
+    </p>
+  </section>
+
+  <!-- 4. CARTAS -->
+  <section class="panel">
+    <h2>3 · ENCONTRÁ LAS PAREJAS</h2>
+
+    <p class="section-note" style="margin-bottom:12px">
+      Hay 24 cartas: dos de cada personaje.
+      Descubrí las dos iguales para formar una pareja.
+    </p>
+
+    <div class="cards" id="cards"></div>
+
+    <p class="status" id="gameStatus">
+      Completá el rompecabezas para desbloquear las cartas.
+    </p>
+  </section>
+
+  <!-- FINAL -->
+  <section class="panel finish" id="finish">
+    <div class="trophy">🏆</div>
+    <h2>¡DESAFÍO COMPLETADO!</h2>
+    <p id="finishText"></p>
+
+    <div class="actions">
+      <button class="btn primary" id="playAgain">
+        COMENZAR DE NUEVO
+      </button>
+
+      <button class="btn" id="chooseOther">
+        ELEGIR OTRO PERSONAJE
+      </button>
+    </div>
+  </section>
+
+  <div class="footer">
+    MUNDO OCULTO · UNA AVENTURA DE INGENIO Y MEMORIA
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+"use strict";
+
+/*
+  IMPORTANTE:
+  Guardá estas 12 imágenes en la misma carpeta que index.html.
+
+  01-zylan.png
+  02-lyra.png
+  03-orvin.png
+  04-nekton.png
+  05-pyrix.png
+  06-astrix.png
+  07-morgo.png
+  08-vyx.png
+  09-bytek.png
+  10-zeldae.png
+  11-kairo.png
+  12-glacior.png
+*/
+
+const characters = [
+  { name: "ZYLAN",   file: "01-zylan.png",   emoji: "🦝" },
+  { name: "LYRA",    file: "02-lyra.png",    emoji: "🧝🏻♀️" },
+  { name: "ORVIN",   file: "03-orvin.png",   emoji: "🦑" },
+  { name: "NÉKTON",  file: "04-nekton.png",  emoji: "🤖" },
+  { name: "PYRIX",   file: "05-pyrix.png",   emoji: "🦊" },
+  { name: "ASTRIX",  file: "06-astrix.png",  emoji: "🐸" },
+  { name: "MORGO",   file: "07-morgo.png",   emoji: "🐈⬛" },
+  { name: "VYX",     file: "08-vyx.png",     emoji: "🧑🏽🚀" },
+  { name: "BYTEK",   file: "09-bytek.png",   emoji: "🐉" },
+  { name: "ZELDAE",  file: "10-zeldae.png",  emoji: "🐼" },
+  { name: "KAIRO",   file: "11-kairo.png",   emoji: "🧚🏻♀️" },
+  { name: "GLACIOR", file: "12-glacior.png", emoji: "🗿" }
+];
+
+const $ = id => document.getElementById(id);
+
+let selected = 0;
+let pieces = [];
+let firstPiece = null;
+
+let deck = [];
+let firstCard = null;
+let lockCards = false;
+
+let unlocked = false;
+let foundPairs = 0;
+let score = 0;
+let moves = 0;
+let seconds = 0;
+
+let timer = null;
+let started = false;
+let finishShown = false;
+let mismatchTimer = null;
+let toastTimer = null;
+
+/* MEZCLAR */
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+/* MENSAJE */
+
+function notify(message) {
+  $("toast").textContent = message;
+  $("toast").classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    $("toast").classList.remove("show");
+  }, 2300);
+}
+
+/* IMAGEN DE PERSONAJE */
+
+function imageMarkup(character, extraClass = "") {
+  return `
+    <img
+      class="${extraClass}"
+      src="${character.file}"
+      alt="${character.name}"
+      draggable="false"
+      onerror="
+        this.style.display='none';
+        const fallback=this.nextElementSibling;
+        if(fallback) fallback.style.display='grid';
+      "
+    >
+    <span class="emoji" style="display:none">${character.emoji}</span>
+  `;
+}
+
+/* PERSONAJES */
+
+function renderCharacters() {
+  $("characters").innerHTML = characters.map((character, index) => `
+    <button
+      type="button"
+      class="character ${index === selected ? "active" : ""}"
+      data-character="${index}"
+      aria-label="Elegir ${character.name}"
+    >
+      ${imageMarkup(character)}
+      <strong>${character.name}</strong>
+    </button>
+  `).join("");
+
+  $("badgeName").textContent = characters[selected].name;
+}
+
+/* ROMPECABEZAS */
+
+function initPuzzle() {
+  pieces = shuffle([0,1,2,3,4,5,6,7,8]);
+
+  // Evitar comenzar con el rompecabezas ya resuelto.
+  if (pieces.every((piece, index) => piece === index)) {
+    [pieces[0], pieces[1]] = [pieces[1], pieces[0]];
+  }
+
+  firstPiece = null;
+  renderPuzzle();
+}
+
+function renderPuzzle() {
+  $("puzzle").innerHTML = pieces.map((piece, position) => {
+    const col = piece % 3;
+    const row = Math.floor(piece / 3);
+    const character = characters[selected];
+
+    return `
+      <button
+        type="button"
+        class="piece ${firstPiece === position ? "selected" : ""} ${piece === position ? "correct" : ""}"
+        data-piece="${position}"
+        aria-label="Pieza ${piece + 1}"
+        ${unlocked || finishShown ? "disabled" : ""}
+      >
+        <div class="piece-art">
+          <img
+            src="${character.file}"
+            alt=""
+            draggable="false"
+            style="--col:${col};--row:${row}"
+            onerror="
+              this.style.display='none';
+              const fallback=this.parentElement.nextElementSibling;
+              if(fallback) fallback.style.display='grid';
+            "
+          >
+        </div>
+        <span class="emoji" style="display:none">${character.emoji}</span>
+        <small>${piece + 1}</small>
+      </button>
+    `;
+  }).join("");
+
+  const correct = pieces.filter((piece, index) => piece === index).length;
+
+  $("progress").textContent = `${correct} de 9 piezas correctas`;
+
+  if (correct === 9) {
+    $("puzzleStatus").textContent =
+      "¡Rompecabezas completo! Pulsá DESBLOQUEAR CARTAS.";
+  }
+}
+
+function puzzleSolved() {
+  return pieces.every((piece, index) => piece === index);
+}
+
+/* CREAR LAS 24 CARTAS: 2 POR CADA PERSONAJE */
+
+function makeDeck() {
+  const newDeck = [];
+
+  characters.forEach((character, index) => {
+    newDeck.push(index, index);
+  });
+
+  return shuffle(newDeck);
+}
+
+function renderCards() {
+  $("cards").innerHTML = deck.map((characterIndex, index) => `
+    <button
+      type="button"
+      class="card"
+      data-card="${index}"
+      aria-label="Carta oculta ${index + 1}"
+      ${!unlocked ? "disabled" : ""}
+    >
+      <span class="card-back" aria-hidden="true">
+        <span class="card-symbol">✦</span>
+        <span class="card-label">OCULTO</span>
+      </span>
+
+      ${imageMarkup(characters[characterIndex])}
+    </button>
+  `).join("");
+}
+
+/* TIEMPO Y PUNTOS */
+
+function formatTime(totalSeconds) {
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainder = totalSeconds % 60;
+
+  return String(minutes).padStart(2, "0") + ":" +
+         String(remainder).padStart(2, "0");
+}
+
+function updateStats() {
+  $("score").textContent = score.toLocaleString("es-AR");
+  $("moves").textContent = moves;
+  $("time").textContent = formatTime(seconds);
+  $("pairs").textContent = `${foundPairs} / 12`;
+}
+
+function startClock() {
+  if (timer !== null) return;
+
+  timer = setInterval(() => {
+    if (started && !finishShown) {
+      seconds++;
+      $("time").textContent = formatTime(seconds);
+    }
+  }, 1000);
+}
+
+function stopClock() {
+  if (timer !== null) {
+    clearInterval(timer);
+    timer = null;
+  }
+}
+
+function beginClock() {
+  if (!started && !finishShown) {
+    started = true;
+    startClock();
+  }
+}
+
+/* REINICIAR PARTIDA */
+
+function resetGame() {
+  stopClock();
+
+  if (mismatchTimer !== null) {
+    clearTimeout(mismatchTimer);
+    mismatchTimer = null;
+  }
+
+  started = false;
+  unlocked = false;
+  finishShown = false;
+  lockCards = false;
+
+  firstPiece = null;
+  firstCard = null;
+
+  foundPairs = 0;
+  score = 0;
+  moves = 0;
+  seconds = 0;
+
+  $("finish").classList.remove("show");
+
+  $("ready").disabled = false;
+  $("ready").textContent = "DESBLOQUEAR CARTAS";
+
+  $("puzzleStatus").textContent =
+    "Elegí un personaje y completá el rompecabezas.";
+
+  $("gameStatus").textContent =
+    "Completá el rompecabezas para desbloquear las cartas.";
+
+  renderCharacters();
+  initPuzzle();
+
+  deck = makeDeck();
+  renderCards();
+
+  updateStats();
+}
+
+/* ELEGIR PERSONAJE */
+
+function chooseCharacter(index) {
+  if (index === selected) return;
+
+  const confirmed = confirm(
+    "¿Cambiar de personaje? La partida actual se reiniciará."
+  );
+
+  if (!confirmed) return;
+
+  selected = index;
+  resetGame();
+
+  notify("Personaje elegido: " + characters[selected].name);
+}
+
+/* DESBLOQUEAR CARTAS */
+
+function activateCards() {
+  if (unlocked || finishShown) return;
+
+  if (!puzzleSolved()) {
+    notify("Primero ordená las nueve piezas del rompecabezas.");
+    return;
+  }
+
+  unlocked = true;
+  beginClock();
+
+  score += 50;
+
+  $("ready").disabled = true;
+  $("ready").textContent = "¡CARTAS DESBLOQUEADAS!";
+
+  $("puzzleStatus").textContent =
+    "¡Excelente! Ahora encontrá las 12 parejas.";
+
+  $("gameStatus").textContent =
+    "Encontrá las dos cartas iguales. Cada pareja suma 250 puntos.";
+
+  renderPuzzle();
+  renderCards();
+  updateStats();
+
+  $("cards").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+/* JUEGO DE MEMORIA */
+
+function revealCard(index) {
+  if (!unlocked || lockCards || finishShown) return;
+
+  const card = $("cards").children[index];
+
+  if (!card) return;
+
+  if (
+    card.classList.contains("matched") ||
+    card.classList.contains("revealed")
+  ) {
+    return;
+  }
+
+  beginClock();
+
+  card.classList.add("revealed");
+  moves++;
+
+  if (firstCard === null) {
+    firstCard = index;
+
+    $("gameStatus").textContent =
+      "Elegí otra carta para intentar encontrar la pareja.";
+
+    updateStats();
+    return;
+  }
+
+  const firstIndex = firstCard;
+  const firstButton = $("cards").children[firstIndex];
+
+  firstCard = null;
+
+  // Las dos cartas pertenecen al mismo personaje.
+  if (deck[firstIndex] === deck[index]) {
+    firstButton.classList.add("matched");
+    card.classList.add("matched");
+
+    firstButton.disabled = true;
+    card.disabled = true;
+
+    foundPairs++;
+    score += 250;
+
+    $("gameStatus").textContent =
+      `¡Pareja encontrada! Llevás ${foundPairs} de 12 parejas.`;
+
+    updateStats();
+
+    if (foundPairs === 12) {
+      finishGame();
+    }
+
+    return;
+  }
+
+  // Si no coinciden, esconder las dos después de un instante.
+  score = Math.max(0, score - 10);
+  lockCards = true;
+
+  $("gameStatus").textContent =
+    "No coinciden. ¡Memorizá las posiciones! Se esconderán en un instante.";
+
+  updateStats();
+
+  mismatchTimer = setTimeout(() => {
+    firstButton.classList.remove("revealed");
+    card.classList.remove("revealed");
+
+    lockCards = false;
+    mismatchTimer = null;
+
+    if (!finishShown) {
+      $("gameStatus").textContent =
+        "Intentá encontrar otra pareja.";
+    }
+  }, 900);
+}
+
+/* FINAL DEL JUEGO */
+
+function finishGame() {
+  finishShown = true;
+  started = false;
+
+  stopClock();
+
+  const bonus = Math.max(0, 500 - seconds * 2 - moves * 2);
+  score += bonus;
+
+  updateStats();
+
+  $("finishText").innerHTML = `
+    ¡Encontraste las 12 parejas de MUNDO OCULTO!<br><br>
+    ⏱ Tiempo: <strong>${formatTime(seconds)}</strong><br>
+    🎯 Movimientos: <strong>${moves}</strong><br>
+    🃏 Parejas encontradas: <strong>12 de 12</strong><br>
+    ⭐ Bonus de rapidez y estrategia: <strong>${bonus} puntos</strong><br>
+    🏆 Puntuación final: <strong>${score.toLocaleString("es-AR")} puntos</strong>
+  `;
+
+  $("finish").classList.add("show");
+
+  $("gameStatus").textContent =
+    "¡Felicitaciones! Encontraste todas las parejas.";
+
+  $("finish").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+/* EVENTOS */
+
+$("characters").addEventListener("click", event => {
+  const button = event.target.closest("[data-character]");
+
+  if (button) {
+    chooseCharacter(Number(button.dataset.character));
+  }
+});
+
+$("puzzle").addEventListener("click", event => {
+  const button = event.target.closest("[data-piece]");
+
+  if (!button || unlocked || finishShown) return;
+
+  beginClock();
+
+  const index = Number(button.dataset.piece);
+
+  if (firstPiece === null) {
+    firstPiece = index;
+  } else {
+    if (firstPiece !== index) {
+      [pieces[firstPiece], pieces[index]] =
+        [pieces[index], pieces[firstPiece]];
+
+      moves++;
+    }
+
+    firstPiece = null;
+  }
+
+  renderPuzzle();
+  updateStats();
+});
+
+$("ready").addEventListener("click", activateCards);
+
+$("cards").addEventListener("click", event => {
+  const button = event.target.closest("[data-card]");
+
+  if (button) {
+    revealCard(Number(button.dataset.card));
+  }
+});
+
+$("restart").addEventListener("click", () => {
+  if (confirm("¿Querés reiniciar la partida desde cero?")) {
+    resetGame();
+    notify("Partida reiniciada. ¡A jugar!");
+  }
+});
+
+$("playAgain").addEventListener("click", () => {
+  resetGame();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  notify("¡Comenzó una nueva partida!");
+});
+
+$("chooseOther").addEventListener("click", () => {
+  selected = (selected + 1) % characters.length;
+  resetGame();
+
+  $("characterPanel").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+/* INICIO */
+
+resetGame();
+</script>
+
+</body>
+</html>
